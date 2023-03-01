@@ -5,6 +5,16 @@ import {defineAsyncComponent} from 'vue'
 const router = createRouter({
   history: createWebHashHistory(),
   routes: [
+
+    {
+      path: '/',
+      redirect: '/home'
+    },
+    {
+      path: '/home',
+      name:'Home',
+      component: () => import('../views/Home.vue')
+    },
     {
       path: '/camera',
       name:'camera',
@@ -13,18 +23,43 @@ const router = createRouter({
     {
       path: '/face',
       name:'face',
-      component: () => import('../components/Face.vue')
+      component: () => import('../views/Face.vue')
     },
     {
-      path: '/faceTest',
-      name:'faceTest',
-      component: () => import('../components/FaceTest.vue')
+      path: '/verifyIdentityFace',
+      name:'VerifyIdentityFace',
+      component: () => import('../views/verifyIdentityFace.vue')
     },
     {
-      path: '/HelloWorld',
-      name:'HelloWorld',
-      component: () => import('../components/HelloWorld.vue')
-    }
+      path: '/faceComparison',
+      name:'FaceComparison',
+      component: () => import('../views/FaceComparison.vue')
+    },
+    {
+      path: '/faceRegisterAndComparison',
+      name:'FaceRegisterAndComparison',
+      component: () => import('../views/FaceRegisterAndComparison.vue')
+    },
+    {
+      path: '/livingDetection',
+      name:'LivingDetection',
+      component: () => import('../views/LivingDetection.vue')
+    },
+    {
+      path: '/microphoneDecection',
+      name:'MicrophoneDecection',
+      component: () => import('../views/MicrophoneDecection.vue')
+    },
+    {
+      path: '/realTimeDetection',
+      name:'RealTiemDetection',
+      component: () => import('../views/RealTimeDetection.vue')
+    },
+    {
+      path: '/fullScreen',
+      name:'FullScreen',
+      component: () => import('../views/FullScreen.vue')
+    },
   ]
 })
 

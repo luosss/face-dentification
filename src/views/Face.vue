@@ -14,8 +14,8 @@
       playsinline
       webkit-playsinline="true"
     ></video>
-    <h1>检测到您的摄像头为：{{ deviceModel }}</h1>
-    <h1>检测到您的麦克风为：{{ audioModels }}</h1>
+    <!-- <h1>检测到您的摄像头为：{{ deviceModel }}</h1>
+    <h1>检测到您的麦克风为：{{ audioModels }}</h1> -->
     <!-- <h1>麦克风最大的阈值为：{{ audioMax }}</h1> -->
     <div id="imgView"></div>
   </div>
@@ -23,6 +23,7 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted, watch } from "vue";
+import {useRouter} from 'vue-router'
 import html2canvas from "html2canvas";
 import {
   AddFace,
@@ -36,6 +37,8 @@ import {
 let deviceModel = ref(null);
 let audioModels = ref(null);
 let audioMax = ref(null);
+
+const router = useRouter();
 
 let canvas = document.createElement("canvas");
 canvas.width = 300;
@@ -277,11 +280,11 @@ watch(isCutScreen, async (newQuestion, oldQuestion) => {
     cutScreenNum.value++;
     if (cutScreenNum.value === 5) {
       ElMessageBox.alert("你已经切屏5次,考试结束", "警告", {
-        // if you want to disable its autofocus
-        // autofocus: false,
         confirmButtonText: "确认",
         callback: (action) => {
-          
+          router.push({
+            path:'/home'
+          })
         },
       });
     }
@@ -448,7 +451,7 @@ const cutScreen = async () => {
   html2canvas(document.body).then(function (canvas) {
     let img = canvas.toDataURL("image/png");
     const dataURL = saveAsPNG(canvas);
-    document.body.appendChild(convertCanvasToImage(canvas));
+    // document.body.appendChild(convertCanvasToImage(canvas));
     monitorExaminationByChatTool(dataURL);
   });
 };
