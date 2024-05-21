@@ -55,12 +55,12 @@ function audioDetection() {
         }, 1000);
 
         // 5秒后停止获取音频数据，并输出最大分贝值
-        setTimeout(() => {
-          anylyserNode.getByteFrequencyData(frequencyData);
-          let maxDecibels = getMaximumDecibels(frequencyData);
-          console.log("Max Decibels:", maxDecibels);
-          audioMax.value = maxDecibels;
-        }, 5000);
+        // setTimeout(() => {
+        //   anylyserNode.getByteFrequencyData(frequencyData);
+        //   let maxDecibels = getMaximumDecibels(frequencyData);
+        //   console.log("Max Decibels:", maxDecibels);
+        //   audioMax.value = maxDecibels;
+        // }, 5000);
 
         scriptProcessor = audioContext.createScriptProcessor(4096, 1, 1);
         mediaStreamSource.connect(scriptProcessor);

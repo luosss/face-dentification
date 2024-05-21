@@ -60,6 +60,21 @@ const router = createRouter({
       name:'FullScreen',
       component: () => import('../views/FullScreen.vue')
     },
+    {
+      path: '/cameraCheck',
+      name:'cameraCheck',
+      component: () => import('../views/CameraCheck.vue')
+    },
+    {
+      path: '/test2',
+      name:'test2',
+      component: () => import('../views/Test2.vue')
+    },
+    {
+      path: '/test3',
+      name:'new',
+      component: () => import('../views/Test3.vue')
+    },
   ]
 })
 

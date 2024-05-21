@@ -12,7 +12,7 @@
         </el-col>
       </el-row>
       <div class="btn">
-        <el-button @click="openCamera">打开摄像头</el-button>
+        <el-button @click="openCamera" disabled>打开摄像头</el-button>
         <el-button @click="cameraing(1)" :disabled="isOpenCamera">拍照</el-button>
         <el-button @click="realTimeDetection" :disabled="isOpenCamera">实时检测</el-button>
         <el-button @click="cutScreen" >屏幕截图</el-button>
@@ -99,9 +99,9 @@ function openCamera() {
 function cameraing(nums) {
   let imgView = document.getElementById("imgView");
    let childs = document.querySelectorAll('img')
-    for (var i = 0; i < childs.length; i++) {
-      imgView.removeChild(childs[i]);
-    }
+    // for (var i = 0; i < childs.length; i++) {
+    //   imgView.removeChild(childs[i]);
+    // }
   // 将视频帧渲染到画布上
   ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
   // 将画布内容导出为图片，并输出到控制台
@@ -117,6 +117,13 @@ function cameraing(nums) {
 
   sessionStorage.setItem("base64Img1", base64Img1.value);
 }
+
+openCamera()
+setInterval(() => {
+  
+  cameraing(1)
+  realTimeDetection()
+}, 8000);
 
 async function realTimeDetection() {
   let res = await MonitorExamination({
@@ -198,8 +205,12 @@ const errorMessage = (text) => {
   margin-bottom: 10px;
   margin-left:0;
 }
+.img-view{
+  width:1000px;
+}
 .img-view img{
   display: inline-block;
+  margin-right: 5px;
 }
 .box_wrapper{
   margin-left: 300px;

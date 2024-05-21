@@ -2,7 +2,7 @@
   <div class="register-box">
     <div>
       <el-row>
-        <el-col :span="24">
+        <!-- <el-col :span="24">
           <span class="ml-3 w-35 text-gray-600 inline-flex items-center"
             >Identity</span
           >
@@ -11,7 +11,7 @@
             class="w-50 m-2"
             placeholder="请输入identity"
           />
-        </el-col>
+        </el-col> -->
         <el-col :span="24">
           <spn>第一张照片</spn>
           <el-input
@@ -76,6 +76,7 @@ const ctx = canvas.getContext("2d");
 
 var constraints = { audio: true, video: true };
 
+
 function openCamera() {
   navigator.mediaDevices
     .getUserMedia(constraints)
@@ -130,6 +131,7 @@ function cameraing(nums) {
 }
 
 async function registerFace() {
+  ids.value = Date.now ()
   let res = await AddFace({
     Identity: ids.value,
     FileBase64: base64Img1.value.substr(22),

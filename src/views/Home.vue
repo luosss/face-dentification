@@ -6,7 +6,7 @@
     >
     <el-button @click="livingDetection" type="info">活体检测</el-button>
     <el-button @click="verifyIdentityFace" type="warning">人脸核身</el-button>
-    <el-button @click="realTiemDetection" type="danger">实时检测</el-button>
+    <el-button @click="realTimeDetection" type="danger">实时检测</el-button>
     <el-button @click="microphoneDecection" type="danger">麦克风检测</el-button>
     <el-button @click="fullScreen" type="danger">防作弊</el-button>
     
@@ -62,7 +62,7 @@ function livingDetection() {
 function verifyIdentityFace() {
   router.push("/verifyIdentityFace");
 }
-function realTiemDetection() {
+function realTimeDetection() {
   router.push("/realTimeDetection");
 }
 function microphoneDecection() {

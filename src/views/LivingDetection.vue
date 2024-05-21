@@ -177,6 +177,6 @@ const errorMessage = (text) => {
   display: inline-block;
 }
 .box_wrapper{
-  margin-left: 300px;
+  /* margin-left: 300px; */
 }
 </style>

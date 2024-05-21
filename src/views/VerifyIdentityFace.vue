@@ -1,6 +1,6 @@
 <template>
   <div class="register-box">
-    <div>
+    <div style="margin-right:500px;">
       <el-row>
           <el-col :span="24">
           <spn>姓名</spn>
@@ -11,11 +11,11 @@
           />
         </el-col>
           <el-col :span="24">
-          <spn>Identity</spn>
+          <spn>证件号</spn>
           <el-input
             v-model="ids"
             class="w-50 m-2"
-            placeholder="请输入identity"
+            placeholder="请输入证件号"
           />
         </el-col>
         <el-col :span="24">
@@ -76,6 +76,7 @@ function openCamera() {
   navigator.mediaDevices
     .getUserMedia(constraints)
     .then(function (stream) {
+      isOpenCamera.value = false;
       var video = document.querySelector("video");
       // 旧的浏览器可能没有srcObject
       if ("srcObject" in video) {
